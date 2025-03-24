@@ -3,8 +3,14 @@ from routes import (
     auth,
     post,
 )  # Import the auth and post modules from the routes package
+from database import (
+    create_tables,
+)  # Import the create_tables function from the database module
 
 app = FastAPI()  # Create an instance of the FastAPI class
+
+# Create the tables in the database
+create_tables()
 
 # Include the auth router in the FastAPI app
 app.include_router(auth.router)

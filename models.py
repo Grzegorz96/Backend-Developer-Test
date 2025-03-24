@@ -7,8 +7,8 @@ from database import Base
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)  # Primary key column
-    email = Column(String, unique=True, index=True)  # Unique email column
-    password = Column(String)  # Password column
+    email = Column(String(255), unique=True, index=True)  # Unique email column
+    password = Column(String(255))  # Password column
     posts = relationship("Post", back_populates="owner")  # Relationship to Post model
 
 
@@ -16,6 +16,6 @@ class User(Base):
 class Post(Base):
     __tablename__ = "posts"
     id = Column(Integer, primary_key=True, index=True)  # Primary key column
-    text = Column(String, index=True)  # Text column
+    text = Column(String(255), index=True)  # Text column
     owner_id = Column(Integer, ForeignKey("users.id"))  # Foreign key to User model
     owner = relationship("User", back_populates="posts")  # Relationship to User model

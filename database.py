@@ -23,3 +23,8 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+# Function to create tables if they do not exist
+def create_tables():
+    Base.metadata.create_all(bind=engine)  # This will create tables if they don't exist
