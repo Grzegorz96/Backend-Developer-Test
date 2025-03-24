@@ -23,11 +23,3 @@ def get_db():
         yield db
     finally:
         db.close()
-
-
-try:
-    # Test the connection
-    with engine.connect() as connection:
-        print("Połączenie z bazą danych MySQL udało się!")
-except Exception as e:
-    print(f"Połączenie nie powiodło się: {e}")
